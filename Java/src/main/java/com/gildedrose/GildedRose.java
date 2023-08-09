@@ -19,21 +19,21 @@ class GildedRose {
     public void updateQuality() {
 
         for (Item item : items) {
-            ItemWrapper wrapper;
+            ItemWrapper _item;
             switch (item.name) {
                 case AGED_BRIE:
-                    wrapper = new AgedBrie(item);
+                    _item = new AgedBrie(item);
                     break;
                 case BACKSTAGE_PASSES:
-                    wrapper = new BackstagePass(item);
+                    _item = new BackstagePass(item);
                     break;
                 case SULFURAS:
-                    wrapper = new Sulfuras(item);
+                    _item = new Sulfuras(item);
                     break;
                 default:
-                    wrapper = new NormalItem(item);
+                    _item = new NormalItem(item);
             }
-            wrapper.update();
+            _item.update();
         }
     }
 
