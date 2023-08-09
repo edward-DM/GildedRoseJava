@@ -24,7 +24,6 @@ public abstract class ItemWrapper {
 
     protected final void decreaseSellIn() {
         item.sellIn = item.sellIn - 1;
-
     }
 
     public final void update() {

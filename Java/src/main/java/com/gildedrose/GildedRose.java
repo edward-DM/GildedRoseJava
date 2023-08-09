@@ -2,6 +2,7 @@ package com.gildedrose;
 
 import com.gildedrose.items.AgedBrie;
 import com.gildedrose.items.BackstagePass;
+import com.gildedrose.items.ConjuredItem;
 import com.gildedrose.items.ItemWrapper;
 import com.gildedrose.items.NormalItem;
 import com.gildedrose.items.Sulfuras;
@@ -20,6 +21,7 @@ class GildedRose {
 
         for (Item item : items) {
             ItemWrapper _item;
+
             switch (item.name) {
                 case AGED_BRIE:
                     _item = new AgedBrie(item);
@@ -33,6 +35,11 @@ class GildedRose {
                 default:
                     _item = new NormalItem(item);
             }
+
+            if (item.name.startsWith("Conjured")) {
+                _item = new ConjuredItem(item);
+            }
+
             _item.update();
         }
     }

@@ -15,7 +15,7 @@ public class NormalItem extends ItemWrapper {
 
     @Override
     public void processExpiredItem() {
-       decreaseQuality();
+        processQuality();
     }
 
     @Override
