@@ -1,24 +1,21 @@
 package com.gildedrose.items;
 
 import com.gildedrose.Item;
-import com.gildedrose.ItemStrategy;
 
-public class BackstagePass implements ItemStrategy {
-
-    public ItemWrapper item;
+public class BackstagePass extends ItemWrapper {
 
     public BackstagePass(Item item) {
-        this.item = new ItemWrapper(item);
+        super(item);
     }
 
     @Override
     public void processQuality() {
-        item.increaseQuality();
+        increaseQuality();
         if (item.sellIn < 11) {
-            item.increaseQuality();
+            increaseQuality();
         }
         if (item.sellIn < 6) {
-            item.increaseQuality();
+            increaseQuality();
         }
     }
 
@@ -29,6 +26,7 @@ public class BackstagePass implements ItemStrategy {
 
     @Override
     public void processSellIn() {
-        item.reduceSellIn();
+        decreaseSellIn();
     }
+
 }

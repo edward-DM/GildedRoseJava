@@ -1,13 +1,11 @@
 package com.gildedrose.items;
 
 import com.gildedrose.Item;
-import com.gildedrose.ItemStrategy;
 
-public class Sulfuras implements ItemStrategy {
-    public ItemWrapper item;
+public class Sulfuras extends ItemWrapper {
 
     public Sulfuras(Item item) {
-        this.item = new ItemWrapper(item);
+        super(item);
     }
 
     @Override

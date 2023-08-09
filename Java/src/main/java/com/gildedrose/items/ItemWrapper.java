@@ -2,30 +2,42 @@ package com.gildedrose.items;
 
 import com.gildedrose.Item;
 
-public class ItemWrapper extends Item {
+public abstract class ItemWrapper {
+
+    public Item item;
 
     public ItemWrapper(Item item) {
-        super(item.name, item.sellIn, item.quality);
+        this.item = item;
     }
 
-    public void increaseQuality() {
-        if (super.quality < 50) {
-            super.quality = super.quality + 1;
+    protected final void increaseQuality() {
+        if (item.quality < 50) {
+            item.quality = item.quality + 1;
         }
     }
 
-    public void decreaseQuality() {
-        if (super.quality > 0) {
-            super.quality = super.quality - 1;
+    protected final void decreaseQuality() {
+        if (item.quality > 0) {
+            item.quality = item.quality - 1;
         }
     }
 
-    public void reduceSellIn() {
-        if (super.sellIn < 0)
-            super.sellIn = super.sellIn - 1;
+    protected final void decreaseSellIn() {
+        item.sellIn = item.sellIn - 1;
+
     }
 
-    public Item toItem() {
-        return new Item(super.name, super.sellIn, super.quality);
+    public final void update() {
+        processQuality();
+        processSellIn();
+        if (item.sellIn < 0) {
+            processExpiredItem();
+        }
     }
+
+    public abstract void processQuality();
+
+    public abstract void processExpiredItem();
+
+    public abstract void processSellIn();
 }

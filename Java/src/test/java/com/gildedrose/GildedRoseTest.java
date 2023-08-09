@@ -100,7 +100,7 @@ class GildedRoseTest {
 
     @Test
     @Disabled
-    void conjusredItemsDegradeTwiceAsFast() {
+    void conjuredItemsDegradeTwiceAsFast() {
         Item item = new Item("Conjured potion", 5, 10);
         GildedRose shop = new GildedRose(new Item[]{item});
 

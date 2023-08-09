@@ -1,27 +1,25 @@
 package com.gildedrose.items;
 
 import com.gildedrose.Item;
-import com.gildedrose.ItemStrategy;
 
-public class AgedBrie implements ItemStrategy {
-    public ItemWrapper item;
+public class AgedBrie extends ItemWrapper {
 
     public AgedBrie(Item item) {
-        this.item = new ItemWrapper(item);
+        super(item);
     }
 
     @Override
     public void processQuality() {
-        item.increaseQuality();
+        super.increaseQuality();
     }
 
     @Override
     public void processExpiredItem() {
-        item.increaseQuality();
+        super.increaseQuality();
     }
 
     @Override
     public void processSellIn() {
-        item.reduceSellIn();
+        super.decreaseSellIn();
     }
 }

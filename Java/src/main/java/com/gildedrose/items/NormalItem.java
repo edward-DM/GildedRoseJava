@@ -1,28 +1,25 @@
 package com.gildedrose.items;
 
 import com.gildedrose.Item;
-import com.gildedrose.ItemStrategy;
 
-public class NormalItem implements ItemStrategy {
-
-    public ItemWrapper item;
+public class NormalItem extends ItemWrapper {
 
     public NormalItem(Item item) {
-        this.item = new ItemWrapper(item);
+        super(item);
     }
 
     @Override
     public void processQuality() {
-        item.increaseQuality();
+        decreaseQuality();
     }
 
     @Override
     public void processExpiredItem() {
-        item.decreaseQuality();
+       decreaseQuality();
     }
 
     @Override
     public void processSellIn() {
-        item.reduceSellIn();
+        decreaseSellIn();
     }
 }
