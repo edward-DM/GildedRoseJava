@@ -28,42 +28,43 @@ class GildedRose {
     private void processQuality(Item item) {
         if (item.name.equals(AGED_BRIE)) {
             increaseQuality(item);
-
-        } else if (item.name.equals(BACKSTAGE_PASSES)) {
+        }
+        else if (item.name.equals(BACKSTAGE_PASSES)) {
             increaseQuality(item);
-            if (item.name.equals(BACKSTAGE_PASSES)) {
-                if (item.sellIn < 11) {
-                    increaseQuality(item);
-                }
-
-                if (item.sellIn < 6) {
-                    increaseQuality(item);
-                }
+            if (item.sellIn < 11) {
+                increaseQuality(item);
             }
-        } else if (item.name.equals(SULFURAS)) {
+            if (item.sellIn < 6) {
+                increaseQuality(item);
+            }
+        }
+        else if (item.name.equals(SULFURAS)) {
             return;
-        } else if (item.quality > 0) {
+        }
+        else if (item.quality > 0) {
             decreaseQuality(item);
         }
     }
 
     private void processSellIn(Item item) {
-        if (!item.name.equals(SULFURAS)) {
-            item.sellIn = item.sellIn - 1;
+        if (item.name.equals(SULFURAS)) {
+            return;
         }
+        item.sellIn = item.sellIn - 1;
     }
 
     private void processedExpiredItem(Item item) {
-        if (!item.name.equals(AGED_BRIE)) {
-            if (!item.name.equals(BACKSTAGE_PASSES)) {
-                if (!item.name.equals(SULFURAS)) {
-                    decreaseQuality(item);
-                }
-            } else {
-                item.quality = 0;
-            }
-        } else {
+        if (item.name.equals(AGED_BRIE)) {
             increaseQuality(item);
+        }
+        else if (item.name.equals(BACKSTAGE_PASSES)) {
+            item.quality = 0;
+        }
+        else if (item.name.equals(SULFURAS)) {
+            return; //do nothing
+        }
+        else {
+            decreaseQuality(item);
         }
     }
 
